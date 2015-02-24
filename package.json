@@ -1,0 +1,34 @@
+{
+  "name": "myChatApp",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jacobdlewis/myChatApp.git"
+  },
+  "author": "jacob lewis <jacobdlewis@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jacobdlewis/myChatApp/issues"
+  },
+  "homepage": "https://github.com/jacobdlewis/myChatApp",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-autoprefixer": "^2.2.0",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-connect": "^0.9.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-jade": "^0.14.1",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^0.18.0",
+    "grunt-usemin": "^3.0.0",
+    "grunt-wiredep": "^2.0.0",
+    "load-grunt-tasks": "^3.1.0"
+  }
+}
