@@ -5,14 +5,33 @@ html(lang='en-US')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     title My Title
-    link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.css')
-    link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap-theme.css')
     link(rel='stylesheet', href='css/main.css')
   body
       <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
       .container
-          h1 Welcome!
+          h1 Welcome to SurvivalChat
+          div.jumbotron.clearfix
+            img.main_banner_image.pull-left(src='http://cdn2.mommyish.com/wp-content/uploads/2013/09/gas-mask.jpg')
+            div.pull-right
+              h2 A chat app for doomsday preppers
+              p Have a bugout plan?
+              p Want to share it with others?
+              h3 This app is for you!
+
+          .row
+            .col-xs-8.col-xs-offset-2
+              div.chat_area.center-block
+              div#message_window
+                button#showMessages Show Messages
+              form.center-block
+                label username:
+                input#user_name(type='text', placeholder="BugoutPlan90")
+                textarea#user_message(cols='40', rows='5', placeholder='Enter your message here')
+                br
+                button#sendMessage(type='submit') Send
+                button#clearMessage Clear
+
 
       // build:js js/vendor.min.js
       // bower:js
