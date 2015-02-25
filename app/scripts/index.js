@@ -1,7 +1,7 @@
 
 'use strict';
 
-var fbUrl = 'ttps://survivalchat.firebaseio.com/';
+var fbUrl = 'https://chatnonymous.firebaseio.com/';
 var fb = new Firebase(fbUrl);
 var postMessagesHere = new Firebase(fbUrl + '/messageData/');
 
