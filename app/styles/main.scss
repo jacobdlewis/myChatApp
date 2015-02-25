@@ -1,6 +1,12 @@
 @import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
 .main_banner_image {
-  height: 200px;
-  width: 200px;
-  border-radius: 25%;
+  height: 175px;
+  width: 250px;
+}
+.message_window {
+  border: 1px solid #eeeeee;
+  height:  200px;
+  width: 700px;
+  border-radius: 5px;
+  padding: 5px 15px;
 }

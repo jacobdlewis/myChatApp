@@ -1,28 +1,51 @@
+
 'use strict';
 
 var fbUrl = 'ttps://survivalchat.firebaseio.com/';
 var fb = new Firebase(fbUrl);
 var postMessagesHere = new Firebase(fbUrl + '/messageData/');
 
+//push messages to firebase
 $('#sendMessage').on('click', function (event) {
-  var messageToPost = $('#user_message').val();
-  var userName = $('#user_name').val();
-  var messageObject = { username: userName,
-                        message: messageToPost};
-  fb.push(messageObject);
+  fb.push({ userName: $('#user_name').val(),
+         messageText: $('#user_message').val()});
   event.preventDefault();
+  $('#user_message').val('');
 });
 
+//on page load, show messages
 $('document').ready(function() {
-  postMessagesHere.once('value', function(data) {
-   debugger;
-   var messageInfo  = data.val();
-   addMessagesToPage(messageInfo);
+fb.once('value', function (snap) {
+  $('#message_window').empty();
+  var allMessages = snap.val();
+  _.forEach(allMessages, function (message) {
+    addMessagesToPage(message.userName, message.messageText);
+    });
   });
 });
 
+//realtime message loading
+fb.on('child_added', function (snap) {
+  var message = snap.val();
+  addMessagesToPage(message.userName, message.messageText);
+});
 
-function addMessagesToPage(data) {
-  $('#message_window').append('<div>' + data.message.username +
-                        ': ' + data.message.message + '</div>');
+//add individual users' messages to page
+function addMessagesToPage(username, messagetext) {
+  $('<div class="posted_message"></div>')
+    .text(messagetext)
+    .prepend(
+      $('<strong></strong>').text(username + ':   ')
+      )
+    .appendTo($('#message_window'));
+}
+
+$('#user_message').on('click', function(event) {
+  event.preventDefault();
+  clearMessage();
+});
+
+//clear typed message
+function clearMessage () {
+  $('#user_message').empty();
 }
