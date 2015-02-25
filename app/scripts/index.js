@@ -7,6 +7,9 @@ var postMessagesHere = new Firebase(fbUrl + '/messageData/');
 
 //push messages to firebase
 $('#sendMessage').on('click', function (event) {
+  if (($('#user_name').val() === "") || ($('#user_message').val() === "")) {
+    alert("You need a username and message to post on this site!");
+  } else {
   fb.push({ userName: $('#user_name').val(),
          messageText: $('#user_message').val(),
          instant    : moment().format('h:mm:ss a')
@@ -14,6 +17,7 @@ $('#sendMessage').on('click', function (event) {
   event.preventDefault();
   $('#user_message').val('');
   checkPostLength();
+  }
 });
 
 //on page load, show first 20 messages
