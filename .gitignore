@@ -29,3 +29,6 @@ node_modules
 
 #public dir
 public
+
+#dependencies
+bower_components
