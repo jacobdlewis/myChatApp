@@ -7,8 +7,14 @@
   border: 1px solid #eeeeee;
   height: 450px;
   width: 450px;
-  min-height: 350px;
-  min-width: 350px;
+
   border-radius: 5px;
   padding: 5px 15px;
+}
+
+@media (max-width: 769px) {
+  .message_window {
+    height: 400px;
+    width: 300px;
+  }
 }
