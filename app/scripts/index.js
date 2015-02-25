@@ -11,9 +11,10 @@ $('#sendMessage').on('click', function (event) {
          messageText: $('#user_message').val()});
   event.preventDefault();
   $('#user_message').val('');
+  checkPostLength();
 });
 
-//on page load, show messages
+//on page load, show first 20 messages
 $('document').ready(function() {
 fb.once('value', function (snap) {
   $('#message_window').empty();
@@ -21,6 +22,7 @@ fb.once('value', function (snap) {
   _.forEach(allMessages, function (message) {
     addMessagesToPage(message.userName, message.messageText);
     });
+  checkPostLength();
   });
 });
 
@@ -48,4 +50,15 @@ $('#user_message').on('click', function(event) {
 //clear typed message
 function clearMessage () {
   $('#user_message').empty();
+}
+
+function checkPostLength() {
+  var numberOfPosts = $('.posted_message').length;
+  if (numberOfPosts > 20) {
+    var messageList = $('.posted_message').splice(numberOfPosts - 20);
+    $('#message_window').empty();
+    _.forEach(messageList, function(msg) {
+    $('#message_window').append(msg);
+    });
+  }
 }

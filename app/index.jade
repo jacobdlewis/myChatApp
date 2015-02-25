@@ -11,26 +11,26 @@ html(lang='en-US')
 
       .container
           h1 Welcome to Chatnonymous
-          div.jumbotron.clearfix
-            img.pull-left.main_banner_image(src='http://www.clipartbest.com/cliparts/pc5/exx/pc5exxEMi.gif')
-            div.pull-right
-              h2 An anonymous chat application
-              p.pull-right Enjoy, and behave yourself
-
           .row
-            .col-xs-5.chat_area
-              div#message_window.message_window
-            .col-xs-5.col-xs-offset-2.chat_form
-              form.center-block
-                div.pull-right
-                  label handle to use:
-                  input#user_name(type='text', placeholder="@nonymous123")
-                div.pull-right
-                  textarea#user_message(cols='40', rows='5', placeholder='Enter your message here')
-                  br
-                  div(role='group').btn-group.pull-right
-                    button.btn.btn-default#sendMessage(type='submit') Send
-                    button.btn.btn-default#clearMessage Clear
+            .col-md-4
+              .chat_area
+                div#message_window.message_window
+              .chat_form.clearfix
+                  form
+                    label handle to use:
+                    input#user_name(type='text', placeholder="@nonymous123")
+                    textarea#user_message(cols='40', rows='5', placeholder='Enter your message here')
+                    div(role='group').btn-group
+                      button.btn.btn-default#sendMessage(type='submit') Send
+                      button.btn.btn-default#clearMessage Clear
+
+            .col-md-6.col-md-offset-2.hidden-xs.hidden-sm
+              div.jumbotron.clearfix
+                img.pull-left.main_banner_image(src='http://www.clipartbest.com/cliparts/pc5/exx/pc5exxEMi.gif')
+                h2.pull-left An anonymous chat application
+                p.pull-left Enjoy, and behave yourself
+
+
 
 
       // build:js js/vendor.min.js
