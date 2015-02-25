@@ -8,7 +8,9 @@ var postMessagesHere = new Firebase(fbUrl + '/messageData/');
 //push messages to firebase
 $('#sendMessage').on('click', function (event) {
   fb.push({ userName: $('#user_name').val(),
-         messageText: $('#user_message').val()});
+         messageText: $('#user_message').val(),
+         instant    : moment().format('h:mm:ss a')
+       });
   event.preventDefault();
   $('#user_message').val('');
   checkPostLength();
@@ -20,7 +22,7 @@ fb.once('value', function (snap) {
   $('#message_window').empty();
   var allMessages = snap.val();
   _.forEach(allMessages, function (message) {
-    addMessagesToPage(message.userName, message.messageText);
+    addMessagesToPage(message.userName, message.messageText, message.instant);
     });
   checkPostLength();
   });
@@ -29,13 +31,16 @@ fb.once('value', function (snap) {
 //realtime message loading
 fb.on('child_added', function (snap) {
   var message = snap.val();
-  addMessagesToPage(message.userName, message.messageText);
+  addMessagesToPage(message.userName, message.messageText, message.instant);
 });
 
 //add individual users' messages to page
-function addMessagesToPage(username, messagetext) {
+function addMessagesToPage(username, messagetext, timestamp) {
   $('<div class="posted_message"></div>')
     .text(messagetext)
+    .prepend(
+      $('<em></em>').text(timestamp + ':   ')
+      )
     .prepend(
       $('<strong></strong>').text(username + ':   ')
       )
